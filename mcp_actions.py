@@ -178,10 +178,12 @@ def send_to_make_webhook(
     """
 
     webhook_payload = {
-        "action": "approved_product_review_update",
-        "notes_entry": payload,
-        "email_draft": email
-    }
+    "action": "approved_product_review_update",
+    "notes_entry": payload,
+    "email_draft": email,
+    "email_subject": email["subject"],
+    "email_body": email["body"]
+}
 
     response = requests.post(
         webhook_url,
