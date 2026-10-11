@@ -1,0 +1,10 @@
+fact_id,topic,fact,source_url,last_checked
+1,Equity brokerage,"For equity trading, Groww charges the lower of ₹20 or 0.1% of trade value per executed order, with a minimum brokerage of ₹5.",https://groww.in/pricing,2026-10-11
+2,Multiple orders,"If a user places multiple orders in a day, total brokerage can exceed ₹20 because brokerage is charged per executed order.",https://groww.in/help/payments-%26-withdrawals/payments-charges/why-is-my-brokerage-more-than-20-rupees--71,2026-10-11
+3,F&O brokerage,"Groww charges a flat brokerage of ₹20 per F&O order.",https://groww.in/help/payments-%26-withdrawals/payments-charges/what-fees-does-groww-charge--58,2026-10-11
+4,Additional trading charges,"Apart from brokerage, trades can include regulatory and statutory charges such as STT, stamp duty, exchange transaction charges, SEBI turnover charges, IPFT charges and GST.",https://groww.in/pricing,2026-10-11
+5,MTF interest,"Groww MTF charges interest of 0.041% per day, equivalent to 14.95% per annum, on the amount funded by Groww.",https://groww.in/stocks/mtf,2026-10-11
+6,MTF brokerage,"Groww charges 0.1% brokerage per MTF order on the total order value.",https://groww.in/stocks/mtf,2026-10-11
+7,MTF pledge charge,"Groww lists a ₹20 pledge or unpledge charge per MTF order.",https://groww.in/stocks/mtf,2026-10-11
+8,GST,"Groww lists 18% GST on applicable charges including brokerage and several other service and transaction charges.",https://groww.in/pricing,2026-10-11
+9,Auto square-off,"Groww lists an auto square-off charge of ₹50 per position for open intraday positions squared off by the system.",https://groww.in/pricing,2026-10-11
