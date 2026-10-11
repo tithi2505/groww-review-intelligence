@@ -1,0 +1,74 @@
+import pandas as pd
+
+df = pd.read_csv("reviews.csv")
+
+def classify_theme(text):
+    text = str(text).lower()
+
+    fee_words = [
+        "fee", "fees", "charge", "charges",
+        "brokerage", "brokrage", "tax", "prime"
+    ]
+
+    mf_words = [
+        "mutual", "redeem", "redemption",
+        "unit allocation", "withdraw", "payment",
+        "credit", "sip", "fund", "money"
+    ]
+
+    support_words = [
+        "support", "customer care", "customer service",
+        "kyc", "login", "nominee", "selfie",
+        "signature", "registration", "account"
+    ]
+
+    trading_words = [
+        "trade", "trading", "order", "stoploss",
+        "stop loss", "chart", "candle", "indicator",
+        "f&o", "fno", "mtf", "trigger", "sell",
+        "pnl", "lag", "slow", "buffer", "freeze",
+        "hang", "stuck", "update", "crash"
+    ]
+
+    if any(word in text for word in fee_words):
+        return "Fees, brokerage & charges"
+
+    if any(word in text for word in mf_words):
+        return "Mutual funds & money movement"
+
+    if any(word in text for word in support_words):
+        return "Support, account & onboarding"
+
+    if any(word in text for word in trading_words):
+        return "Trading & app reliability"
+
+    return "General experience & usability"
+
+
+df["theme"] = df["review_text"].apply(classify_theme)
+
+theme_counts = df["theme"].value_counts()
+
+print("\nTHEME COUNTS")
+print(theme_counts)
+
+print("\nTOP 3 THEMES")
+print(theme_counts.head(3))
+
+fee_reviews = df[
+    df["theme"] == "Fees, brokerage & charges"
+]
+
+print("\nFEE / CHARGE REVIEWS")
+print(
+    fee_reviews[
+        ["review_date", "rating", "review_text"]
+    ].to_string(index=False)
+)
+
+negative_reviews = df[df["rating"] <= 2]
+
+print("\nSAMPLE USER QUOTES")
+
+for _, row in negative_reviews.head(3).iterrows():
+    print("-", row["review_text"])
