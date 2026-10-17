@@ -21,28 +21,24 @@ The project combines **review analysis** with **workflow automation**: after app
 
 ## End-to-end workflow
 
-```text
-Bundled public review dataset (reviews.csv)
-                 |
-                 v
-        Streamlit analysis app
-     - Themes, counts and quotes
-     - Weekly Product Pulse
-     - Fee explanation + sources
-                 |
-                 v
-        Human review and approval
-                 |
-                 v
-          Make.com webhook
-                 |
-                 v
-       +-----------------------+
-       |                       |
-       v                       v
-Google Docs: append       Gmail: create a
-analysis entry            draft (do not send)
+The diagram below represents the **active Make.com scenario** tested with an approved Streamlit payload:
+
+```mermaid
+flowchart LR
+    A["Streamlit app<br/>Review analysis + human approval"]
+    B["Make.com<br/>1. Custom webhook"]
+    C["Google Docs<br/>2. Append analysis to log"]
+    D["Gmail<br/>3. Create email draft"]
+
+    A --> B --> C --> D
+
+    style A fill:#eef2ff,stroke:#6366f1,color:#1e1b4b
+    style B fill:#fce7f3,stroke:#db2777,color:#831843
+    style C fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style D fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
 ```
+
+**Verified behavior:** After approval, the webhook receives the payload, Google Docs appends the review intelligence, and Gmail creates a draft with a subject and body. The scenario is active. The draft is **not sent automatically**.
 
 ### Make.com scenario
 
